@@ -36,6 +36,11 @@ impl Guess {
     }
 }
 
+fn prints_and_returns_10(a: i32) -> i32 {
+    println!("I got the value {}", a);
+    10
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -105,5 +110,19 @@ mod tests {
     #[should_panic]
     fn less_than_0() {
         Guess::new(-2);
+    }
+
+    #[test]
+    fn this_test_will_pass() {
+        let value = prints_and_returns_10(4);
+        assert_eq!(10, value);
+    }
+
+    //this test will be ignored
+    #[test]
+    #[ignore]
+    fn this_test_will_fail() {
+        let value = prints_and_returns_10(8);
+        assert_ne!(5, value);
     }
 }
